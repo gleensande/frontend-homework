@@ -19,6 +19,4 @@ function processObj(obj, prev, simp) {
   }
 }
 
-function processPair(property, value, simp) {
-  simp[property] = value;
-}
+let processPair = (property, value, simp) => simp[property] = value;
