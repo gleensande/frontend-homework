@@ -11,7 +11,7 @@ function processObj(obj, prev, simp) {
   for (var prop in obj) {
     var val = obj[prop];
 
-    if (typeof(val) != 'object') {
+    if (typeof(val) !== 'object') {
       processPair(prev + prop, val, simp);
     } else {
       processObj(val, prev + prop + '.', simp);
