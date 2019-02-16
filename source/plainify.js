@@ -1,6 +1,10 @@
 'use strict';
 
 const plainify = function plainify(complicated) {
+  if (typeof(complicated) !== 'object' || complicated === null) {
+    return null;
+  }
+
   let simple = {};
   processObj(complicated, '', simple);
 

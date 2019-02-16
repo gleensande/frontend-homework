@@ -133,4 +133,10 @@ QUnit.module('Тестируем функцию plainify', function () {
 
 		assert.deepEqual(plainify(nested3), plain3);
 	});
+
+	QUnit.test('plainify работает правильно с типами, не являющимися объектами, и null', function (assert) {
+		assert.deepEqual(plainify(42), null);
+		assert.deepEqual(plainify(null), null);
+		assert.deepEqual(plainify(undefined), null);
+	});	
 });
