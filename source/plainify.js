@@ -7,7 +7,7 @@
  * @return {object} simple - plain-объект
  */
 const plainify = (complicated) => {
-  if (!complicated || typeof(complicated) !== 'object') {
+  if (!complicated || typeof complicated !== 'object') {
     return null;
   }
 
@@ -30,7 +30,7 @@ const processObj = (compl, prev, simp) => {
   for (let prop in compl) {
     let val = compl[prop];
 
-    if (typeof(val) !== 'object') {
+    if (typeof val !== 'object') {
       simp[prev + prop] = val;
     } else {
       processObj(val, prev + prop + '.', simp);
