@@ -28,16 +28,16 @@ const plainify = (complicated) => {
  */
 const processObj = (compl, prev, simp) => {
   let complArr = Object.entries(compl);
-  console.log(complArr);
 
-  for (let prop in compl) {
-    let val = compl[prop];
+  complArr.forEach( function(element) {
+    let prop = element[0];
+    let val = element[1];
 
     if (typeof val === 'object') {
       processObj(val, prev + prop + '.', simp);
-      continue;
+      return;
     }
 
     simp[prev + prop] = val;
-  }
+  });
 }
