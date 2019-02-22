@@ -27,13 +27,17 @@ const plainify = (complicated) => {
  * @param {object} simp - внешний объект, в который записывается plain
  */
 const processObj = (compl, prev, simp) => {
+  let complArr = Object.entries(compl);
+  console.log(complArr);
+
   for (let prop in compl) {
     let val = compl[prop];
 
-    if (typeof val !== 'object') {
-      simp[prev + prop] = val;
-    } else {
+    if (typeof val === 'object') {
       processObj(val, prev + prop + '.', simp);
+      continue;
     }
+
+    simp[prev + prop] = val;
   }
 }
