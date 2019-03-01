@@ -11,32 +11,39 @@ const plainify = (complicated) => {
     return null;
   }
 
-  let simple = {};
-  processObj(complicated, '', simple);
+  let simple = makePlain(complicated, '');
 
   return simple;
 }
 
-/**
- * Рекурсивная функция, обрабатывающая один объект.
- * Записывает данные в переданную переменную.
- *
- * @param {object} compl - обрабатываемый в данный вызов объект
- * @param {string} prev - строка, к которой будут прибавлены названия полей
- * текущего объекта для перевода в plain-формат
- * @param {object} simp - внешний объект, в который записывается plain
- */
-const processObj = (compl, prev, simp) => {
-  let complArr = Object.entries(compl);
+const makePlain = (compl, prev) => {
+  let simp = {};
 
-  complArr.forEach( function(element) {
-    let [prop, val] = element;
+  /**
+   * Рекурсивная функция, обрабатывающая один объект.
+   * Записывает данные в переданную переменную.
+   *
+   * @param {object} compl - обрабатываемый в данный вызов объект
+   * @param {string} prev - строка, к которой будут прибавлены названия полей
+   * текущего объекта для перевода в plain-формат
+   * @return {object} simple - plain-объект
+   */
+  const processObj = (compl, prev) => {
+    let complArr = Object.entries(compl);
 
-    if (typeof val === 'object') {
-      processObj(val, prev + prop + '.', simp);
-      return;
-    }
+    complArr.forEach( function(element) {
+      let [prop, val] = element;
 
-    simp[prev + prop] = val;
-  });
+      if (typeof val === 'object') {
+        processObj(val, prev + prop + '.');
+        return;
+      }
+
+      simp[prev + prop] = val;
+    });
+  }
+
+  processObj(compl, prev);
+
+  return simp;
 }
