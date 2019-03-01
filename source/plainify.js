@@ -30,8 +30,7 @@ const processObj = (compl, prev, simp) => {
   let complArr = Object.entries(compl);
 
   complArr.forEach( function(element) {
-    let prop = element[0];
-    let val = element[1];
+    let [prop, val] = element;
 
     if (typeof val === 'object') {
       processObj(val, prev + prop + '.', simp);
