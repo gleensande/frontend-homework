@@ -3,15 +3,16 @@
 /**
  * Создает plain-объект из объекта со вложенными свойствами
  *
- * @param {object} complicated - объект со вложенными свойствами
+ * @param {object} compl - объект со вложенными свойствами
  * @return {object} simple - plain-объект
  */
-const plainify = (complicated) => {
-  if (!complicated || typeof complicated !== 'object') {
+const plainify = (compl) => {
+  if (!compl || typeof compl !== 'object') {
     return null;
   }
 
   let simp = {};
+  let prev = '';
 
   /**
    * Рекурсивная функция, обрабатывающая один объект.
