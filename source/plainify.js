@@ -11,12 +11,6 @@ const plainify = (complicated) => {
     return null;
   }
 
-  let simple = makePlain(complicated, '');
-
-  return simple;
-}
-
-const makePlain = (compl, prev) => {
   let simp = {};
 
   /**
