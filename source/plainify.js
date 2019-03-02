@@ -18,7 +18,7 @@ const plainify = (compl) => {
   
 /**
  * Рекурсивная функция, обрабатывающая один объект.
- * Записывает данные в переданную переменную.
+ * Возвращает plain-объект.
  *
  * @param {object} compl - обрабатываемый в данный вызов объект
  * @param {string} prev - строка, к которой будут прибавлены названия полей
@@ -29,7 +29,7 @@ const processObj = (compl, prev) => {
   let simp = {};
   let complArr = Object.entries(compl);
 
-  complArr.forEach( function(element) {
+  complArr.forEach(element => {
     let [prop, val] = element;
 
     if (typeof val === 'object') {
