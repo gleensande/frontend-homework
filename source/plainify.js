@@ -29,16 +29,16 @@ const processObj = (compl, prev) => {
   let simp = {};
   let complArr = Object.entries(compl);
 
-  complArr.forEach(element => {
-    let [prop, val] = element;
+  simp = complArr.reduce( ((acc, curr) => {
+    let [prop, val] = curr;
 
     if (typeof val === 'object') {
-      simp = Object.assign(simp, processObj(val, prev + prop + '.'));
-      return simp;
+      return Object.assign(acc, processObj(val, prev + prop + '.'));
     }
 
-    simp[prev + prop] = val;
-  });
+    acc[prev + prop] = val;
+    return acc;
+  }), {});
 
   return simp;
 }
