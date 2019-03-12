@@ -26,10 +26,9 @@ const plainify = (compl) => {
  * @return {object} simp - plain-объект
  */
 const processObj = (compl, prev) => {
-  let simp = {};
   let complArr = Object.entries(compl);
 
-  simp = complArr.reduce( ((acc, curr) => {
+  let simp = complArr.reduce( ((acc, curr) => {
     let [prop, val] = curr;
 
     if (typeof val === 'object') {
