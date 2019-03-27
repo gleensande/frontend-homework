@@ -11,9 +11,7 @@ const plainify = (compl) => {
     return null;
   }
 
-  let simp = processObj(compl, '');
-
-  return simp;
+  return processObj(compl, '');
 }
   
 /**
@@ -28,7 +26,7 @@ const plainify = (compl) => {
 const processObj = (compl, prev) => {
   let complArr = Object.entries(compl);
 
-  let simp = complArr.reduce( ((acc, curr) => {
+  return complArr.reduce( ((acc, curr) => {
     let [prop, val] = curr;
 
     if (typeof val === 'object') {
@@ -38,6 +36,4 @@ const processObj = (compl, prev) => {
     acc[prev + prop] = val;
     return acc;
   }), {});
-
-  return simp;
 }
