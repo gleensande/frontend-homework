@@ -24,10 +24,10 @@ const plainify = (compl) => {
  * @return {object} simp - plain-объект
  */
 const processObj = (compl, prev) => {
-  let complArr = Object.entries(compl);
+  const complArr = Object.entries(compl);
 
   return complArr.reduce( ((acc, curr) => {
-    let [prop, val] = curr;
+    const [prop, val] = curr;
 
     if (typeof val === 'object') {
       return Object.assign(acc, processObj(val, prev + prop + '.'));
